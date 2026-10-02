@@ -6,12 +6,74 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return appBar();
+    return Scaffold(
+      appBar: appBar(),
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [
+          _searchField(),
+        ],
+      ),
+    );
   }
 
-  Scaffold appBar() {
-    return Scaffold(
-    appBar: AppBar(
+  Container _searchField() {
+    return Container(
+          margin: EdgeInsets.only(top: 40, left: 20, right: 20),
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Color(0xff1D1617).withValues(alpha: 0.11),
+                blurRadius: 40,
+                spreadRadius: 0.0,
+              ),
+            ],
+          ),
+          child: TextField(
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white,
+              hintText: "Search Pancake",
+              hintStyle: TextStyle(
+                color: Color(0xffDDDADA),
+                fontSize: 14,
+              ),
+              contentPadding: EdgeInsets.all(15),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.all(12),
+                child: SvgPicture.asset('assets/icons/Search.svg'),
+              ),
+              suffixIcon: SizedBox(
+                width: 100,
+                child: IntrinsicHeight(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      VerticalDivider(
+                        color: Colors.black,
+                        indent: 10,
+                        endIndent: 10,
+                        thickness: 0.1,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: SvgPicture.asset('assets/icons/Filter.svg'),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
+                borderSide: BorderSide.none,
+              ),
+            ),
+          ),
+        );
+  }
+
+  AppBar appBar() {
+    return AppBar(
       title: Text(
         "Breakfast",
         style: TextStyle(
@@ -59,7 +121,6 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ],
-    ),
-  );
+    );
   }
 }
